@@ -6,12 +6,23 @@
 
     <groupId>me.scutum</groupId>
     <artifactId>scutum-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>Scutum core</name>
     <description>The scutum main core project api</description>
     <url>http://scutum.me</url>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <licenses>
         <license>
@@ -22,8 +33,20 @@
     </licenses>
 
     <scm>
+        <connection>scm:git:git://github.com/scutum-net/scutum-core.git</connection>
+        <developerConnection>scm:git:ssh://github.com:scutum-net/scutum-core.git</developerConnection>
         <url>https://github.com/scutum-net/scutum-core</url>
     </scm>
+
+    <developers>
+        <developer>
+            <name>euhoro</name>
+            <email>eugen_hhh@yahoo.com</email>
+            <organization>Scutum</organization>
+            <organizationUrl>http://www.scutum.me</organizationUrl>
+        </developer>
+    </developers>
+
     <!--<dependencies>
         <dependency>
             <groupId>...</groupId>
@@ -47,6 +70,62 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!--For Java docs-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Signing-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--auto-close after staging-->
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

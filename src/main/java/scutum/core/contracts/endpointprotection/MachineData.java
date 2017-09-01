@@ -10,7 +10,7 @@ public class MachineData {
     private int version;
     private int scannerType = 1;
     private LocalDateTime timeStamp;
-    private Collection<Process> processes;
+    private Collection<ProcessData> processes;
 
 
     public MachineData(String id,
@@ -18,7 +18,7 @@ public class MachineData {
                        int version,
                        int scannerType,
                        LocalDateTime timeStamp,
-                       Collection<Process> processes) {
+                       Collection<ProcessData> processes) {
         this.setId(id);
         this.setCustomerId(customerId);
         this.setVersion(version);
@@ -67,11 +67,11 @@ public class MachineData {
         this.timeStamp = timeStamp;
     }
 
-    public Collection<Process> getProcesses() {
+    public Collection<ProcessData> getProcesses() {
         return processes;
     }
 
-    public void setProcesses(Collection<Process> processes) {
+    public void setProcesses(Collection<ProcessData> processes) {
         this.processes = processes;
     }
 }
