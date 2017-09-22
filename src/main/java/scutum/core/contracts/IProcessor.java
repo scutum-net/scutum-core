@@ -1,6 +1,5 @@
 package scutum.core.contracts;
 
-public interface Processor {
-    Integer getProviderId();
+public interface IProcessor {
     Alert[] process(ScannedData data);
 }
